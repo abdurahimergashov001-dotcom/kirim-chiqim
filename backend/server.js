@@ -36,10 +36,12 @@ app.use(cors({
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
+      process.env.FRONTEND_URL,
+      'https://kirim-chiqim.vercel.app',
       'https://aurora-ledger.vercel.app',
       'http://localhost:5173',
       'http://localhost:3000'
-    ];
+    ].filter(Boolean);
     
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
